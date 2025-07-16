@@ -2,11 +2,11 @@ services:
   - type: web
     name: mtt-gateway
     env: python
-    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate"
+    buildCommand: "pip install -r requirements-render.txt && python manage.py collectstatic --no-input && python manage.py migrate"
     startCommand: "gunicorn mtt_gateway.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: mtt_gateway.settings_production
+        value: mtt_gateway.settings_render
       - key: PYTHON_VERSION
         value: 3.9.18
       - key: DEBUG
